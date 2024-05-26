@@ -14,6 +14,12 @@ namespace Restaurants.Infrastructure.Repositories
             return entity;
         }
 
+        public IQueryable<Restaurant> GetQuery()
+        {
+            var restaurants = dbContext.Restaurants.AsQueryable();
+            return restaurants;
+        }
+
         public async Task<IEnumerable<Restaurant>> GetAllAsync()
         {
             var restaurants = await dbContext.Restaurants.ToListAsync();
