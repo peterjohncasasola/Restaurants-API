@@ -6,6 +6,6 @@ namespace Restaurants.Domain.Repositories
     {
         Task<IEnumerable<Restaurant>> GetAllAsync();
 
-        Task<Restaurant> GetByIdAsync(int id);
+        Task<Restaurant?> GetByIdAsync(int id);
     }
 }
