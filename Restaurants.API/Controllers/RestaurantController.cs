@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
+using Restaurants.Application.Restaurants.Dtos;
 
 namespace Restaurants.API.Controllers
 {
@@ -28,10 +29,12 @@ namespace Restaurants.API.Controllers
 
         // POST api/<RestaurantController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] CreateRestaurantDto dto)
         {
+            var restaurant = await restaurantsService.Create(dto);
+            return new ObjectResult(restaurant) { StatusCode = StatusCodes.Status201Created };
         }
-
+        
         // PUT api/<RestaurantController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
