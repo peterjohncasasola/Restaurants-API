@@ -14,18 +14,6 @@ namespace Restaurants.Application.Restaurants
     ) : IRestaurantsService
     
     {
-        public async Task<RestaurantDto> Create(CreateRestaurantDto dto)
-        {
-            logger.LogInformation("Creating restaurant");
-
-            var restaurant = mapper.Map<Restaurant>(dto);
-            var createdRestaurant = await restaurantsRepository.Create(restaurant);
-
-            var restaurantDto = mapper.Map<RestaurantDto>(createdRestaurant);
-
-            return restaurantDto;
-        }
-
         public async Task<IEnumerable<RestaurantDto>> GetAll()
         {
             logger.LogInformation("Getting all restaurants");

@@ -8,5 +8,8 @@ namespace Restaurants.Domain.Repositories
         IQueryable<Restaurant> GetQuery();
         Task<Restaurant?> GetByIdAsync(int id);
         Task<Restaurant> Create(Restaurant entity);
+        Task<bool> Update(Restaurant entity);
+        Task<int> SaveChangesAsync();
+        Task Delete(Restaurant restaurant);
     }
 }

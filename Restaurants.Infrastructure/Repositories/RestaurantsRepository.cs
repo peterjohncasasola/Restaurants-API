@@ -31,5 +31,19 @@ namespace Restaurants.Infrastructure.Repositories
             var restaurant = await dbContext.Restaurants.FindAsync(id);
             return restaurant;
         }
+
+        public async Task<bool> Update(Restaurant restaurant)
+        {
+            dbContext.Entry(restaurant).State = EntityState.Modified;
+            return (await dbContext.SaveChangesAsync()) > 0;
+        }
+
+        public async Task<int> SaveChangesAsync() => await dbContext.SaveChangesAsync();
+
+        public async Task Delete(Restaurant restaurant)
+        {
+            dbContext.Remove(restaurant);
+            await dbContext.SaveChangesAsync();
+        }
     }
 }

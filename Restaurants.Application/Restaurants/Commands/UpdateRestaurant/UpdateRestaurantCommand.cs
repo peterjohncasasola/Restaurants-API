@@ -1,9 +1,12 @@
-﻿using Restaurants.Domain.Entities;
+﻿
+using MediatR;
+using Restaurants.Application.Restaurants.Dtos;
 
-namespace Restaurants.Application.Restaurants.Dtos;
+namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 
-public class CreateRestaurantDto
+public class UpdateRestaurantCommand : IRequest<bool>
 {
+    public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
     public string Category { get; set; } = default!;
