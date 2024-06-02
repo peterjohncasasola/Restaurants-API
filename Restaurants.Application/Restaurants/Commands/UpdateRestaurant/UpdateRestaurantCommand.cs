@@ -4,7 +4,7 @@ using Restaurants.Application.Restaurants.Dtos;
 
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 
-public class UpdateRestaurantCommand : IRequest<bool>
+public class UpdateRestaurantCommand : IRequest
 {
     public int Id { get; set; }
     public string Name { get; set; } = default!;
@@ -17,5 +17,5 @@ public class UpdateRestaurantCommand : IRequest<bool>
 
     public string? City { get; set; }
     public string? Street { get; set; }
-    public string? PostalCode { get; set; }
+    public string? PostalCode { get; set; } 
 }
