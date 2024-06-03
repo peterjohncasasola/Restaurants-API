@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Restaurants.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Restaurants.Infrastructure.Configurations
 {
@@ -24,6 +19,7 @@ namespace Restaurants.Infrastructure.Configurations
 
             builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
             builder.Property(p => p.Description).IsRequired();
+
 
         }
     }
