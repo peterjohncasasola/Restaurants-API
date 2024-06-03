@@ -2,9 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Domain.Repositories;
+using Restaurants.Domain.Entities;
 using Restaurants.Infrastructure.Persistence;
 using Restaurants.Infrastructure.Repositories;
 using Restaurants.Infrastructure.Seeders;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Restaurants.Infrastructure.Extensions
 {
@@ -14,13 +17,17 @@ namespace Restaurants.Infrastructure.Extensions
         {
             var connectionString = configuration.GetConnectionString("RestaurantsDb");
 
+
             services.AddDbContext<RestaurantsDbContext>
             (options => 
                 options.UseSqlServer(connectionString).EnableSensitiveDataLogging()
             );
 
+            services.AddIdentityApiEndpoints<User>().AddEntityFrameworkStores<RestaurantsDbContext>();
+
             services.AddScoped<IRestaurantSeeder, RestaurantSeeder>();
             services.AddScoped<IRestaurantsRepository, RestaurantsRepository>();
+
         }
     }
 }

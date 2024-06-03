@@ -4,6 +4,7 @@ using Restaurants.Infrastructure.Seeders;
 using Restaurants.Application.Extensions;
 using Serilog;
 using Restaurants.API.Middlewares;
+using Restaurants.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +45,7 @@ if (app.Environment.IsDevelopment()) {
 // Configure the HTTP request pipeline.
  app.UseHttpsRedirection();
 
+app.MapGroup("api/identity").MapIdentityApi<User>();
 app.UseAuthorization();
 
 app.MapControllers();
